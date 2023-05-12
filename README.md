@@ -1,4 +1,4 @@
-# An minimal example for playing with fuzzing
+# A minimal example for playing with fuzzing
 
 I created this repository to learn about fuzzing. It contains a very small C++
 program created for the express purpose of being fuzzed. The program is a
