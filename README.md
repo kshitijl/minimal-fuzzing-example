@@ -21,9 +21,9 @@ expert.
 The more recent years of my career have been spent with OCaml, Rust and Python.
 I know this code reeks of ML-isms, particularly the structs for simulating
 variant types, and the way failures are returned using (simulated) variants. I
-understand this isn't idiomatic C++. Hopefully the code is easy to follow: it
-uses a finite state machine for parsing, and a stack-based evaluator that
-processes the stream of tokens in order.
+understand this isn't idiomatic C++. Hopefully the code is nevertheless easy to
+follow: it uses a finite state machine for parsing, and a stack-based evaluator
+that processes the stream of tokens in order.
 
 The reason I wrote this in C++ is because the fuzzing tools seem to support C
 and C++ best, and I didn't want to write pure C because of the lack of built-in
