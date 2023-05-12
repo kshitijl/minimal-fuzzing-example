@@ -1,1 +1,1 @@
-afl-fuzz -i seeds -o fuzz-out -D target/debug/main
+afl-fuzz -i seeds -o fuzz-out -D target/debug/main-instrumented
