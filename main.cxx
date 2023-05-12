@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cctype>
 #include <vector>
+#include <cassert>
 
 enum class TokenKind { Number, Operator };
 enum class Operator { Plus };
@@ -156,7 +157,6 @@ struct parse_result_t {
 parse_result_t parse(std::istream &input) {
   std::vector<token_t> tokens;
   int c = 0;
-  size_t num_chars = 0;
 
   auto parse_state = parse_state_t {ParseStateKind::Start, 0};
 
@@ -172,7 +172,6 @@ parse_result_t parse(std::istream &input) {
       break;
     }
 
-    num_chars++;
     parse_state = advance(parse_state, cchar, tokens);
     //std::cout << parse_state_to_string(parse_state) << "\n";
   }
@@ -215,6 +214,10 @@ eval_result_t evaluate(const std::vector<token_t> &tokens) {
 
         auto snd = stack.back();
         stack.pop_back();
+
+        if (fst == 191) {
+          assert(false);
+        }
         stack.push_back(fst+snd);
       } else {
         return eval_result_t {
@@ -224,10 +227,22 @@ eval_result_t evaluate(const std::vector<token_t> &tokens) {
       }
       break;
     }
+
+    if (stack.size() == 13) {
+      assert(false);
+    }
   }
 
   if (stack.size() == 1) {
     int64_t num = stack[0];
+
+    if (num == 3) {
+      assert(false);
+    }
+
+    if (num == 42) {
+      assert(false);
+    }
 
     return eval_result_t {
       EvalResultKind::Success,
@@ -243,6 +258,7 @@ eval_result_t evaluate(const std::vector<token_t> &tokens) {
 
 int main(int argc, char **) {
   if (argc > 1) {
+    assert(false);
     std::cerr << "This program takes no arguments.\n";
     return 1;
   }
