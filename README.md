@@ -13,10 +13,72 @@ specific circumstances, e.g., if the final result evaluates to 42, or if an
 addition is executed where the first operand is 191. Search the code for
 `assert` to find them all.
 
-There may, of course, be other unintentional bugs in the code. I'm no C++
+There may also, of course, be some unintentional bugs in the code. I'm no C++
 expert.
 
-## Fuzzing
+## How to run it
+
+### Natively on macOS M1
+
+Follow the instructions in Built AFL++ following the instructions in [AFL++'s
+docs](https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/INSTALL.md) to
+build and install AFL++. Then, run
+
+`make clean && make all`
+
+to build both instrumented and uninstrumented binaries.
+
+Run
+
+`./run-afl-instrumented`
+
+and
+
+`./run-afl-uninstrumented`
+
+to fuzz the instrumented and uninstrumented binaries respectively.
+
+### Using an x86 Linux container
+
+I also built and fuzzed the program in an x86 Linux VM running on my M1 Mac. To
+do that, install Docker Desktop. Run
+
+`./run-container`
+
+to start the container.
+
+`cd /src` to change into the directory with this repo from within the container.
+Then, run
+
+`make clean && make all`
+
+to build both instrumented and uninstrumented binaries.
+
+Run
+
+`./run-afl-instrumented`
+
+and
+
+`./run-afl-uninstrumented`
+
+to fuzz the instrumented and uninstrumented binaries respectively.
+
+## Gotchas
+
+Remember to `make clean` before running in Docker if you've built binaries on
+the native platform, and vice-versa.
+
+Install LLVM via brew as suggested in AFL++'s docs.
+
+This part is important for getting rid of shm errors when running `sudo gmake install`:
+
+```
+sudo sysctl kern.sysv.shmmax=8388608
+sudo sysctl kern.sysv.shmall=4096
+```
+
+## Fuzzing results
 
 Fuzzing found all the bugs I inserted within minutes, and in some
 configurations, in a few seconds, starting from a minimal non-crashing seed
