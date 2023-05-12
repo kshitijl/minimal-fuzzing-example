@@ -33,7 +33,7 @@ dynamically-growing `vector` and `string` types.
 
 ### Natively on macOS M1
 
-Follow the instructions in Built AFL++ following the instructions in [AFL++'s
+Follow the instructions in [AFL++'s
 docs](https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/INSTALL.md) to
 build and install AFL++. Then, run
 
@@ -93,7 +93,7 @@ sudo sysctl kern.sysv.shmall=4096
 
 ## Fuzzing results
 
-Fuzzing found all the bugs I inserted within minutes, and in some
+Fuzzing found all the intentionally-inserted bugs within minutes, and in some
 configurations, in a few seconds, starting from a minimal non-crashing seed
 input.
 
