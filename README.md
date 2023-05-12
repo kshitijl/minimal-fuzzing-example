@@ -20,7 +20,7 @@ expert.
 
 The more recent years of my career have been spent with OCaml, Rust and Python.
 I know this code reeks of ML-isms, particularly the structs for simulating
-variant types, and the way failures are returned using a (simulated) variant. I
+variant types, and the way failures are returned using (simulated) variants. I
 understand this isn't idiomatic C++. Hopefully the code is easy to follow: it
 uses a finite state machine for parsing, and a stack-based evaluator that
 processes the stream of tokens in order.
