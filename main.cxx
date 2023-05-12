@@ -14,6 +14,8 @@ struct token_t {
 };
 
 enum class ParseStateKind { Start, Error, Number, Operator };
+
+// For debugging.
 const char* psk_to_string(ParseStateKind p) {
   const char* names[] = {"Start", "Error", "Number", "Operator"};
   return names[static_cast<int>(p)];
@@ -24,6 +26,7 @@ struct parse_state_t {
   int64_t num;
 };
 
+// For debugging.
 std::string parse_state_to_string(parse_state_t p) {
   return std::string(psk_to_string(p.fsm_state)) + " " + std::to_string(p.num);
 }
@@ -33,10 +36,8 @@ enum class CharacterKind { Digit, Operator, Space, Other };
 CharacterKind classify_char(unsigned char c) {
   if (std::isdigit(c)) {
     return CharacterKind::Digit;
-
   } else if (c == '+') {
     return CharacterKind::Operator;
-
   } else if (c == ' ') {
     return CharacterKind::Space;
   }  else {
@@ -173,7 +174,6 @@ parse_result_t parse(std::istream &input) {
     }
 
     parse_state = advance(parse_state, cchar, tokens);
-    //std::cout << parse_state_to_string(parse_state) << "\n";
   }
 
   advance(parse_state, ' ', tokens);
