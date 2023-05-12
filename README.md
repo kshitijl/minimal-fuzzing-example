@@ -94,7 +94,7 @@ sudo sysctl kern.sysv.shmall=4096
 ## Fuzzing results
 
 Fuzzing found all the intentionally-inserted bugs within minutes, and in some
-configurations, in a few seconds, starting from a minimal non-crashing seed
+configurations within a few seconds, starting from a minimal non-crashing seed
 input.
 
 I fuzzed it using [AFL++](https://github.com/AFLplusplus/AFLplusplus) on my M1
